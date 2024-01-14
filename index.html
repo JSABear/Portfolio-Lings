@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Your Name - Programmer Portfolio</title>
+</head>
+<body>
+
+    <header>
+        <img src="placeholder.jpg" alt="Logo" id="profile-picture">
+        <h1>Santtu Karhu</h1>
+        <p>Game Developer | Software Engineer</p>
+    </header>
+
+
+    <section id="about">
+        <h2>Lings</h2>
+        <p>
+            Lings is a puzzle-strategy game in the gameplay style of lemmings and visual style of CarbotAnimations.
+        </p>
+    </section>
+
+    <section id="videos">
+        <h2>Game Development Showcase</h2>
+        <!-- Replace the VIDEO_ID with the actual ID of your YouTube video -->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/7_6okex-aLY?si=GEY26t3-e0rKVw_E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </section>
+
+    <section id="code-snippets">
+        <h2>Code Snippets</h2>
+        <p>Here are some code snippets showcasing my programming skills:</p>
+
+        <h3>Snippet 1: Ling Command Manager</h3>
+        <pre>
+            <code>
+                public void ActivateBuildButton()
+                {
+                Debug.Log("ActivateBuildButton()");
+
+                if (currentTarget != null)
+                {
+                SpawnBridge spawnBridge = currentTarget.GetComponent<SpawnBridge>
+                    ();
+                    if (spawnBridge != null)
+                    {
+                    spawnBridge.BuildButton();
+                    }
+                    }
+                    }
+
+                    public void ActivateDigButton()
+                    {
+                    Debug.Log("ActivateDigButton()");
+
+                    if (currentTarget != null)
+                    {
+                    CharacterMovement characterMovement = currentTarget.GetComponent<CharacterMovement>
+                        ();
+                        if (characterMovement != null)
+                        {
+                        characterMovement.Digging();
+                        }
+                        }
+                        }
+
+                        public void ToggleGameObjectVisibility(GameObject objectToToggle)
+                        {
+                        if (objectToToggle != null)
+                        {
+                        // Access the walking direction from TargetLing
+                        int walkingDirection = targetLing.WalkingDirection;
+
+                        // Toggle the visibility of the GameObject based on the walking direction
+                        if (walkingDirection == 1)
+                        {
+                        // Character is facing right, make the GameObject visible
+                        objectToToggle.SetActive(false);
+                        }
+                        else
+                        {
+                        // Character is facing left, make the GameObject invisible
+                        objectToToggle.SetActive(true);
+                        }
+                        }
+                        }
+            </code>
+    </pre>
+
+        <h3>Snippet 2: Ling Movement</h3>
+        <pre>
+            <code>
+                if (grounded == true && rb2D.velocity.y <= 0)
+                {
+                rb2D.velocity = Vector2.zero;
+                rb2D.gravityScale = 0;
+                }
+                else
+                {
+                rb2D.gravityScale = 1;
+                }
+
+                if (!isDigging)
+                {
+                // Move forward until front check hits an object
+                if (!frontHit)
+                {
+                if (!isBuilding)
+                {
+                Move(moveSpeed * facingDirection);
+                animator.SetBool("IsWalking", true);
+                }
+                else
+                {
+                Move(buildSpeed * facingDirection);
+                animator.SetBool("IsWalking", true);
+                }
+                }
+                else
+                {
+                // Turn around when front check hits an object
+                spawnBridge.StopBuilding();
+                isBuilding = false;
+                FlipDirection();
+                animator.SetBool("IsWalking", false);
+
+                }
+                }
+                else
+                {
+
+                Move(digSpeed * facingDirection);
+                //transform.Translate(0, -digSpeed * Time.deltaTime, 0);
+                cameraDraw.PaintRay(digLocation.transform.position, 100);
+
+                animator.SetBool("IsWalking", true);
+
+                }
+            </code>
+    </pre>
+
+        <!-- Add more code snippets as needed -->
+
+    </section>
+
+
+
+    <footer>
+        <p>&copy; 2024 Santtu Karhu. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
